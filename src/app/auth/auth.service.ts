@@ -1,0 +1,23 @@
+import * as firebase from 'firebase/app';
+
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
+
+@Injectable()
+export class AuthService {
+  constructor(private fireAuth: AngularFireAuth) { }
+
+  register(email: string, password: string): firebase.Promise<any> {
+    return this.fireAuth.auth.createUserWithEmailAndPassword(email, password);
+  }
+
+  login(email: string, password: string): firebase.Promise<any> {
+    return this.fireAuth.auth.signInWithEmailAndPassword(email, password);
+  }
+
+  logOut(): void {
+    this.fireAuth.auth.signOut();
+  }
+}

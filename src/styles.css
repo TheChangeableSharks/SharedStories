@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+/* global */
+html,
+body {
+    overflow-x: hidden;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+body {
+    padding-top: 75px;
+}
+
+/* bootstrap extensions */
+.padding-none {
+    padding: 0;
+}
+
+.margin-none {
+    margin: 0;
+}
+
+.margin-bot-sm {
+    margin-bottom: 10px;
+}
+
+.margin-bot-md {
+    margin-bottom: 20px;
+}
+
+.margin-bot-lg {
+    margin-bottom: 45px;
+}
