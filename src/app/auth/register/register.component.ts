@@ -18,7 +18,8 @@ export class RegisterComponent {
       .register(email, password)
       .then(() => this.router.navigate(['/']))
       .catch((error: any) => {
-        // TODO: display errors
+        const errorMessage = error.message;
+        alert(errorMessage);
       });
   }
 }

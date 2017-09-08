@@ -10,16 +10,15 @@ import { AuthService } from './../auth.service';
 })
 export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) { }
-
   login(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
-
     this.authService
       .login(email, password)
       .then(() => this.router.navigate(['/']))
       .catch((error: any) => {
-        // TODO: display errors
+        const errorMessage = error.message;
+        alert(errorMessage);
       });
   }
 }
