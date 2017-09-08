@@ -33,6 +33,13 @@ export class StoriesService {
       });
   }
 
+  getTopStories() {
+    return this.db
+      .list(this.collection, {
+        query: { orderByChild: 'likes', limitToLast : 5 }
+      });
+  }
+
   create(title: string, content: string, authorId: string) {
     const likes = 0;
     return this.db

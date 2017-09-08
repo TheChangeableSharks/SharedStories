@@ -16,7 +16,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase, 'SharedStories'),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
   ],
   declarations: [AppComponent, HeaderComponent, SidebarComponent],
   providers: [AuthService],
