@@ -7,6 +7,7 @@ import { AllStoriesComponent } from './all-stories/all-stories.component';
 import { MyStoriesComponent } from './my-stories/my-stories.component';
 import { StoryComponent } from './story/story.component';
 import { CreateStoryComponent } from './create-story/create-story.component';
+import { RandomStoryComponent } from './random-story/random-story.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,8 @@ import { CreateStoryComponent } from './create-story/create-story.component';
     FormsModule
   ],
   providers: [StoriesService],
-  declarations: [AllStoriesComponent, MyStoriesComponent, StoryComponent, CreateStoryComponent]
+  declarations: [AllStoriesComponent, MyStoriesComponent, StoryComponent, CreateStoryComponent,
+    RandomStoryComponent
+]
 })
 export class StoriesModule { }
