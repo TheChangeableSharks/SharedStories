@@ -1,4 +1,6 @@
 <div *ngFor="let story of stories" class="story">
-  <h4>{{story.title}}</h4>
-  <p class="text-muted">{{story.content}}</p>
+  <h4 class="title">
+    <a [routerLink]="['/stories/details/', story.$key]">{{story.title}}</a>
+  </h4>
+  <p class="content text-muted">{{story.content}}</p>
 </div>

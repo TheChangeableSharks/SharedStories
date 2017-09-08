@@ -8,6 +8,7 @@ import { MyStoriesComponent } from './my-stories/my-stories.component';
 import { StoryComponent } from './story/story.component';
 import { CreateStoryComponent } from './create-story/create-story.component';
 import { RandomStoryComponent } from './random-story/random-story.component';
+import { StoryDetailsComponent } from './story-details/story-details.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { RandomStoryComponent } from './random-story/random-story.component';
   ],
   providers: [StoriesService],
   declarations: [AllStoriesComponent, MyStoriesComponent, StoryComponent, CreateStoryComponent,
-    RandomStoryComponent
+    RandomStoryComponent,
+    StoryDetailsComponent
 ]
 })
 export class StoriesModule { }

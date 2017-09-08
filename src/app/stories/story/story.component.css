@@ -5,3 +5,10 @@
     min-height: 50px;
     padding: 15px;
 }
+
+.content,
+.title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

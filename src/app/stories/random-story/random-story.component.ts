@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { StoriesService } from './../stories.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,17 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./random-story.component.css']
 })
 export class RandomStoryComponent implements OnInit {
-  private stories;
-
-  constructor(private storiesService: StoriesService) { }
+  constructor(private storiesService: StoriesService, private router: Router) { }
 
   ngOnInit() {
     this.storiesService
       .getAll()
       .subscribe((stories) => {
-      const len = stories.length;
-      const random = Math.floor(Math.random() * len);
-      this.stories = [stories[random]];
+        const len = stories.length;
+        const random = Math.floor(Math.random() * len);
+        const story = stories[random];
+
+        this.router.navigate(['/stories/details', story.$key]);
       });
   }
 }

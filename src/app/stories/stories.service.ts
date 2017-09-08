@@ -44,6 +44,6 @@ export class StoriesService {
   }
 
   getById(storyId): Observable<Story> {
-    return this.db.object(this.collection + storyId);
+    return this.db.object(`${this.collection}/${storyId}`);
   }
 }

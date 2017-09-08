@@ -1,3 +1,4 @@
+import { StoryDetailsComponent } from './story-details/story-details.component';
 import { RandomStoryComponent } from './random-story/random-story.component';
 import { CreateStoryComponent } from './create-story/create-story.component';
 import { MyStoriesComponent } from './my-stories/my-stories.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'my', component: MyStoriesComponent },
   { path: 'create', component: CreateStoryComponent },
   { path: 'random', component: RandomStoryComponent },
+  { path: 'details/:id', component: StoryDetailsComponent }
 ];
 
 @NgModule({
