@@ -9,15 +9,19 @@ import { Router } from '@angular/router';
 export class AuthService {
   constructor(private fireAuth: AngularFireAuth) { }
 
-  register(email: string, password: string): firebase.Promise<any> {
+  register(email: string, password: string) {
     return this.fireAuth.auth.createUserWithEmailAndPassword(email, password);
   }
 
-  login(email: string, password: string): firebase.Promise<any> {
+  login(email: string, password: string) {
     return this.fireAuth.auth.signInWithEmailAndPassword(email, password);
   }
 
-  logOut(): void {
-    this.fireAuth.auth.signOut();
+  logOut() {
+    return this.fireAuth.auth.signOut();
+  }
+
+  getCurrentUser() {
+    return this.fireAuth.auth.currentUser;
   }
 }

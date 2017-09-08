@@ -6,11 +6,13 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from './auth.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
+    LogoutComponent,
   ],
   imports: [
     CommonModule,

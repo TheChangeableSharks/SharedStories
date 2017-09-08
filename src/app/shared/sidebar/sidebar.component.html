@@ -1,5 +1,4 @@
 <ul class="list-group text-center">
-  <li class="list-group-item">Username</li>
   <li class="list-group-item"><a routerLink="/">All stories</a></li>
-  <li class="list-group-item"><a routerLink="/">My stories</a></li>
+  <li *ngIf="getCurrentUser()" class="list-group-item"><a routerLink="/stories/my">My stories</a></li>
 </ul>

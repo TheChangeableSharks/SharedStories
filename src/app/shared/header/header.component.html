@@ -5,14 +5,26 @@
     </div>
     <div id="navbar">
       <ul class="nav navbar-nav navbar-right">
-        <li routerLinkActive="active">
-          <a id="register" routerLink="/auth/register">Register &nbsp;</a>
-        </li>
-        <li routerLinkActive="active">
-          <a id="login" routerLink="/auth/login">Login &nbsp;
+        <div *ngIf="getCurrentUser() then loggedIn else loggedOut"></div>
+        <ng-template #loggedIn>
+          <li routerLinkActive="active">
+            <a routerLink="/stories/my">{{getCurrentUser().email}}</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/auth/logout">Logout &nbsp;
+              <span aria-hidden="true" class="glyphicon glyphicon-log-out"></span>
+            </a>
+        </ng-template>
+        <ng-template #loggedOut>
+          <li routerLinkActive="active">
+            <a routerLink="/auth/register">Register &nbsp;</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/auth/login">Login &nbsp;
             <span aria-hidden="true" class="glyphicon glyphicon-log-in"></span>
           </a>
-        </li>
+          </li>
+        </ng-template>
       </ul>
     </div>
   </div>
