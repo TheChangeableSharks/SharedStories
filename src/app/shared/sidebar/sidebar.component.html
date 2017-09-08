@@ -1,4 +1,8 @@
-<ul class="list-group text-center">
-  <li class="list-group-item"><a routerLink="/">All stories</a></li>
-  <li *ngIf="getCurrentUser()" class="list-group-item"><a routerLink="/stories/my">My stories</a></li>
-</ul>
+<div class="list-group text-center">
+  <a routerLink="/stories/all" routerLinkActive="active" class="list-group-item">All stories</a>
+  <a routerLink="/stories/random" routerLinkActive="active" class="list-group-item">Random stories</a>
+  <div *ngIf="getCurrentUser()">
+    <a  routerLink="/stories/my" routerLinkActive="active" class="list-group-item">My stories</a>
+    <a  routerLink="/stories/create" routerLinkActive="active" class="list-group-item">Create story</a>
+  </div>
+</div>

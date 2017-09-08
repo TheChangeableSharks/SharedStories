@@ -1,23 +1,23 @@
+import { AuthService } from './../auth/auth.service';
 import { Story } from './../models/story';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
-
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable()
 export class StoriesService {
-  private user: Observable<firebase.User>;
+  private user: firebase.User;
   private collection: string;
 
   constructor(
-    private afAuth: AngularFireAuth,
+    private Router: Router,
     private db: AngularFireDatabase,
-    private Router: Router
+    private authService: AuthService
   ) {
-    this.user = this.afAuth.authState;
+    this.user = this.authService.getCurrentUser();
     this.collection = '/stories';
   }
 
@@ -26,12 +26,20 @@ export class StoriesService {
       .list(this.collection, { query: { orderByKey: true } });
   }
 
-  create(title: string, description: string) {
+  getByUserId(userId) {
+    return this.db
+      .list(this.collection, {
+        query: { orderByChild: 'authorId', equalTo: userId }
+      });
+  }
+
+  create(title: string, content: string, authorId: string) {
     return this.db
       .list(this.collection)
       .push({
         title,
-        description,
+        content,
+        authorId
       });
   }
 

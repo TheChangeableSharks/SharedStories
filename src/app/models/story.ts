@@ -1,11 +1,13 @@
 export class Story {
     public $key: string;
     public title: string;
-    public description: string;
+    public content: string;
+    public authorId: string;
 
-    constructor({ $key, title, description }) {
+    constructor({ $key, title, content, authorId }) {
         this.$key = $key;
         this.title = title;
-        this.description = description;
+        this.content = content;
+        this.authorId = authorId;
     }
 }
