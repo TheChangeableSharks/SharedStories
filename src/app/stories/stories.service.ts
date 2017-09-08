@@ -34,12 +34,14 @@ export class StoriesService {
   }
 
   create(title: string, content: string, authorId: string) {
+    const likes = 0;
     return this.db
       .list(this.collection)
       .push({
         title,
         content,
-        authorId
+        authorId,
+        likes
       });
   }
 
