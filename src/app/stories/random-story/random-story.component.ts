@@ -5,8 +5,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-random-story',
-  templateUrl: './random-story.component.html',
-  styleUrls: ['./random-story.component.css']
+  template: '',
+  styles: []
 })
 export class RandomStoryComponent implements OnInit, OnDestroy {
   private storiesSub: Subscription;

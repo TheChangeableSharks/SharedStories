@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class StoryDetailsComponent implements OnInit, OnDestroy {
   private paramsSub: Subscription;
   private storiesSub: Subscription;
-  private story: Story;
+  public story: Story;
 
   constructor(
     private route: ActivatedRoute,

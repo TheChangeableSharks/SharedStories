@@ -9,7 +9,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./all-stories.component.css']
 })
 export class AllStoriesComponent implements OnInit, OnDestroy {
-  private stories: Story[];
+  public stories: Story[];
   private storiesSub: Subscription;
 
   constructor(private storiesService: StoriesService) { }
