@@ -36,7 +36,7 @@ export class StoriesService {
   getTopStories() {
     return this.db
       .list(this.collection, {
-        query: { orderByChild: 'likes', limitToLast: 5 }
+        query: { orderByChild: 'likes', limitToLast : 5 }
       });
   }
 
