@@ -10,18 +10,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-story.component.css']
 })
 export class CreateStoryComponent {
-  constructor(private authService: AuthService, private storiesService: StoriesService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private storiesService: StoriesService,
+    private router: Router
+  ) { }
 
   create(form: NgForm) {
     const title = form.value.title;
     const content = form.value.content;
     const authorId = this.authService.getCurrentUser().uid;
-    const likes = 0;
-    const likedUsers = [];
-    this.storiesService.create(title, content, authorId, likes, likedUsers)
-    .then(() => {
-      this.router.navigate(['']);
-      alert('Story created');
-    });
+
+    this.storiesService.create(title, content, authorId)
+      .then(() => {
+        this.router.navigate(['']);
+        alert('Story created');
+      });
   }
 }

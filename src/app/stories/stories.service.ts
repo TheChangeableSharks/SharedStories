@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable()
@@ -40,27 +40,35 @@ export class StoriesService {
       });
   }
 
-  create(title: string, content: string, authorId: string, likes: number, likedUsers: string[]) {
+  create(title: string, content: string, authorId: string) {
     return this.db
       .list(this.collection)
       .push({
         title,
         content,
         authorId,
-        likes,
-        likedUsers,
+        likes: 0,
+        likedUsers: [],
         dateAdded: 0 - Number(new Date()),
       });
   }
 
   updateLikes(storyId, likes) {
-    const story = this.db.object(`${this.collection}/${storyId}`);
-    story.update({
+    const story = this.getById(storyId);
+    return story.update({
       likes: likes
     });
   }
 
-  getById(storyId): Observable<Story> {
+  addComment(storyId: string, content: string, authorId: string) {
+    const story = this.getById(storyId);
+    return story.$ref.child('comments').push({
+      authorId: authorId,
+      content: content,
+    });
+  }
+
+  getById(storyId): FirebaseObjectObservable<Story> {
     return this.db.object(`${this.collection}/${storyId}`);
   }
 }

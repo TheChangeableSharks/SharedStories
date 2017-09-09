@@ -1,17 +1,23 @@
+import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
 import { StoriesService } from './../stories.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-random-story',
   templateUrl: './random-story.component.html',
   styleUrls: ['./random-story.component.css']
 })
-export class RandomStoryComponent implements OnInit {
-  constructor(private storiesService: StoriesService, private router: Router) { }
+export class RandomStoryComponent implements OnInit, OnDestroy {
+  private storiesSub: Subscription;
+
+  constructor(
+    private storiesService: StoriesService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
-    this.storiesService
+    this.storiesSub = this.storiesService
       .getAll()
       .subscribe((stories) => {
         const len = stories.length;
@@ -20,5 +26,9 @@ export class RandomStoryComponent implements OnInit {
 
         this.router.navigate(['/stories/details', story.$key]);
       });
+  }
+
+  ngOnDestroy() {
+    this.storiesSub.unsubscribe();
   }
 }

@@ -1,10 +1,21 @@
 <div class="row">
   <div class="col-xs-8">
     <div class="story">
-      <h3 class="title">{{story.title}}</h3>
-      <p class="content text-muted">{{story.content}}</p>
+      <h3 class="title">{{story?.title}}</h3>
+      <p class="content text-muted">{{story?.content}}</p>
     </div>
-    <h2 class="text-center">{{story.likes}} Likes</h2>
-    <button class="btn btn-block btn-primary" (click)="like()">Like</button>
+    <div class="text-center">
+      <h3>
+        <button class="btn btn-primary" (click)="like()">
+          <span class="glyphicon glyphicon-thumbs-up"></span>Like
+        </button>
+        <span>{{story?.likes}}&nbsp;Likes</span>
+      </h3>
+      <h3>Comments</h3>
+    </div>
+    <textarea #textarea (keypress)="comment($event, textarea)" class="comment-input form-control" placeholder="Write a comment..."></textarea>
+    <div *ngFor="let comment of story?.comments" class="comment">
+      {{comment.content}}
+    </div>
   </div>
 </div>
