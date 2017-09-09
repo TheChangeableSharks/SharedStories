@@ -14,6 +14,6 @@ export class AllStoriesComponent implements OnInit {
   ngOnInit() {
     this.storiesService
       .getAll()
-      .subscribe((stories) => this.stories = stories.reverse());
+      .subscribe((stories) => this.stories = stories);
   }
 }

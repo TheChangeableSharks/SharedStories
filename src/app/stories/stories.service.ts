@@ -23,7 +23,7 @@ export class StoriesService {
 
   getAll(): FirebaseListObservable<Story[]> {
     return this.db
-      .list(this.collection, { query: { orderByKey: true } });
+      .list(this.collection, { query: { orderByChild: 'dateAdded' } });
   }
 
   getByUserId(userId) {
@@ -36,7 +36,7 @@ export class StoriesService {
   getTopStories() {
     return this.db
       .list(this.collection, {
-        query: { orderByChild: 'likes', limitToLast : 5 }
+        query: { orderByChild: 'likes', limitToLast: 5 }
       });
   }
 
@@ -48,15 +48,18 @@ export class StoriesService {
         content,
         authorId,
         likes,
-        likedUsers
+        likedUsers,
+        dateAdded: 0 - Number(new Date()),
       });
   }
+
   updateLikes(storyId, likes) {
     const story = this.db.object(`${this.collection}/${storyId}`);
     story.update({
       likes: likes
     });
   }
+
   getById(storyId): Observable<Story> {
     return this.db.object(`${this.collection}/${storyId}`);
   }
