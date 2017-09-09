@@ -62,12 +62,10 @@ export class StoriesService {
 
   addComment(storyId: string, content: string, authorId: string) {
     const story = this.getById(storyId);
-    const dateAdded = new Date();
-    console.log(dateAdded);
     return story.$ref.child('comments').push({
       authorId: authorId,
       content: content,
-      dateAdded: dateAdded,
+      dateAdded: Number(new Date()),
     });
   }
 
