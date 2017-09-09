@@ -37,6 +37,13 @@ body {
 }
 
 /* global custom styles */
+textarea,
+input[type=text],
+input[type=email],
+input[type=password] {
+    background-color: #F8F8F8 !important;
+}
+
 .sidebar {
     position: fixed;
 }

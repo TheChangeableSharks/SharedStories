@@ -1,4 +1,4 @@
-a {
+.list-group-item:not(.active) {
     background-color: #F8F8F8;
 }
 .list-group-item {

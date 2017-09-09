@@ -21,10 +21,14 @@ export class CreateStoryComponent {
     const content = form.value.content;
     const authorId = this.authService.getCurrentUser().uid;
 
-    this.storiesService.create(title, content, authorId)
-      .then(() => {
-        this.router.navigate(['']);
-        alert('Story created');
-      });
+    if (!title || !content) {
+      alert('Your story is empty');
+    } else {
+      this.storiesService.create(title, content, authorId)
+        .then(() => {
+          this.router.navigate(['']);
+          alert('Story created');
+        });
+    }
   }
 }
