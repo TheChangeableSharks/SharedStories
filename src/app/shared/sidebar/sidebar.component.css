@@ -1,31 +1,6 @@
-.sidebar {
-    position: fixed;
-}
 a {
     background-color: #F8F8F8;
 }
-@media (min-width: 576px) {
-    .sidebar {
-        width: 150px;
-    }
-}
-@media (min-width: 768px) {
-    .sidebar {
-        width: 170px;
-    }
-}
-
-@media (min-width: 992px) {
-    .sidebar {
-        width: 220px;
-    }
-}
-@media (min-width: 1200px) {
-    .sidebar {
-        width: 270px;
-    }
-}
-
 .list-group-item {
     margin-bottom: 20px;
 }

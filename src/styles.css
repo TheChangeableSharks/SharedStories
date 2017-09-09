@@ -35,3 +35,28 @@ body {
 .margin-bot-lg {
     margin-bottom: 45px;
 }
+
+/* global custom styles */
+.sidebar {
+    position: fixed;
+}
+@media (min-width: 576px) {
+    .sidebar {
+        width: 150px;
+    }
+}
+@media (min-width: 768px) {
+    .sidebar {
+        width: 170px;
+    }
+}
+@media (min-width: 992px) {
+    .sidebar {
+        width: 220px;
+    }
+}
+@media (min-width: 1200px) {
+    .sidebar {
+        width: 270px;
+    }
+}
