@@ -40,18 +40,23 @@ export class StoriesService {
       });
   }
 
-  create(title: string, content: string, authorId: string) {
-    const likes = 0;
+  create(title: string, content: string, authorId: string, likes: number, likedUsers: string[]) {
     return this.db
       .list(this.collection)
       .push({
         title,
         content,
         authorId,
-        likes
+        likes,
+        likedUsers
       });
   }
-
+  updateLikes(storyId, likes) {
+    const story = this.db.object(`${this.collection}/${storyId}`);
+    story.update({
+      likes: likes
+    });
+  }
   getById(storyId): Observable<Story> {
     return this.db.object(`${this.collection}/${storyId}`);
   }

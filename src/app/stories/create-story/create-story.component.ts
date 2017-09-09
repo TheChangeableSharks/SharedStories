@@ -16,8 +16,9 @@ export class CreateStoryComponent {
     const title = form.value.title;
     const content = form.value.content;
     const authorId = this.authService.getCurrentUser().uid;
-
-    this.storiesService.create(title, content, authorId)
+    const likes = 0;
+    const likedUsers = [];
+    this.storiesService.create(title, content, authorId, likes, likedUsers)
     .then(() => {
       this.router.navigate(['']);
       alert('Story created');
