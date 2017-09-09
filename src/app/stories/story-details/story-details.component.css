@@ -2,6 +2,7 @@
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 25px;
+    background-color: #F8F8F8;
 }
 .story > .title {
     margin-top: 0;
