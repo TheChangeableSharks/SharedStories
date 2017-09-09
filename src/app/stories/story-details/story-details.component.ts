@@ -22,14 +22,18 @@ export class StoryDetailsComponent implements OnInit, OnDestroy {
   ) { }
 
   like() {
-    const userId = this.authService.getCurrentUser().uid;
-    const storyId = this.story.$key;
-    const currentLikes = this.story.likesCount;
+    if (this.authService.getCurrentUser()) {
+      const userId = this.authService.getCurrentUser().uid;
+      const storyId = this.story.$key;
+      const currentLikes = this.story.likesCount;
 
-    if (!this.story.likedByViewer) {
-      this.storiesService.like(storyId, userId, currentLikes);
-    } else {
-      this.storiesService.unLike(storyId, userId, currentLikes);
+      if (!this.story.likedByViewer) {
+        this.storiesService.like(storyId, userId, currentLikes);
+        this.story.likedByViewer = true;
+      } else {
+        this.storiesService.unLike(storyId, userId, currentLikes);
+        this.story.likedByViewer = false;
+      }
     }
   }
 
@@ -55,8 +59,12 @@ export class StoryDetailsComponent implements OnInit, OnDestroy {
         this.storiesSub = this.storiesService
           .getById(id)
           .subscribe((story) => {
-            const viewerId = this.authService.getCurrentUser().uid;
-            this.story = new Story(story, viewerId);
+            const viewer = this.authService.getCurrentUser();
+            if (viewer) {
+              this.story = new Story(story, viewer.uid);
+            } else {
+              this.story = new Story(story);
+            }
           });
       });
   }

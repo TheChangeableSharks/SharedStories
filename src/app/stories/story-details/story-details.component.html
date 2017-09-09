@@ -10,10 +10,10 @@
       <div class="text-center">
         <h3>
           <button class="btn btn-primary" (click)="like()">
-          <span *ngIf="story.likedByViewer" class="glyphicon glyphicon-heart"></span>
-          <span *ngIf="!story.likedByViewer" class="glyphicon glyphicon-heart-empty"></span>
-          <span>&nbsp;Like</span>
-        </button>
+            <span *ngIf="story.likedByViewer" class="glyphicon glyphicon-heart"></span>
+            <span *ngIf="!story.likedByViewer" class="glyphicon glyphicon-heart-empty"></span>
+            <span>&nbsp;Like</span>
+          </button>
           <span>{{story.likesCount}}&nbsp;Likes</span>
         </h3>
         <h3>Comments</h3>
