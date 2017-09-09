@@ -18,7 +18,8 @@
       </div>
       <textarea #textarea (keypress)="comment($event, textarea)" class="comment-input form-control" placeholder="Write a comment..."></textarea>
       <div *ngFor="let comment of story.comments" class="comment">
-        {{comment.content}}
+         <p>{{comment.dateAdded | date:'dd MMM yyyy HH:mm'}}</p> 
+         <p>{{comment.content}}</p>
       </div>
     </ng-template>
     <ng-template #loadingTemplate>
