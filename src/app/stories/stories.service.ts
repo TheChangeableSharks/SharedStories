@@ -66,15 +66,19 @@ export class StoriesService {
   }
 
   unLike(storyId: string, userId: string, currentLikes) {
-    // const story = this.getById(storyId);
+    const story = this.getById(storyId);
 
-    // return story.$ref.child('likes')
-    //   .orderByKey()
-    //   .equalTo(userId)
-    //   .limitToFirst(1)
-    //   .once('child_added', (snapshot) =>
-    //     snapshot.ref.remove()
-    //   );
+    return story.$ref.child('likes')
+      .orderByValue()
+      .equalTo(userId)
+      .once('child_added', (snapshot) => {
+        snapshot.ref.remove();
+      }).then(() => {
+        const newReversedLikes = -(currentLikes - 1);
+        story.$ref
+          .child('reversedLikesCount')
+          .set(newReversedLikes);
+      });
   }
 
   addComment(storyId: string, content: string, authorId: string) {
