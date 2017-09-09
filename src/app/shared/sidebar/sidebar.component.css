@@ -1,6 +1,9 @@
 .sidebar {
     position: fixed;
 }
+a {
+    background-color: #F8F8F8;
+}
 @media (min-width: 576px) {
     .sidebar {
         width: 150px;

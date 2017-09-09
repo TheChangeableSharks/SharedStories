@@ -3,6 +3,8 @@
 html,
 body {
     overflow-x: hidden;
+    background-image: url("../src/assets/background.png");
+    background-attachment: fixed;
 }
 
 html {
