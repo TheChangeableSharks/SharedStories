@@ -48,6 +48,7 @@ export class StoryDetailsComponent implements OnInit, OnDestroy {
         this.storiesSub = this.storiesService
           .getById(id)
           .subscribe((story) => {
+            story.dateAdded = new Date(story.dateAdded * -1);
             if (story.comments) {
               story.comments = Object.values(story.comments);
             }

@@ -4,6 +4,7 @@
     <ng-template #storyTemplate>
       <div class="story">
         <h3 class="title">{{story.title}}</h3>
+        <p class="content text-muted">{{story.dateAdded | date:'dd MMM yyyy HH:mm'}}</p>
         <p class="content text-muted">{{story.content}}</p>
       </div>
       <div class="text-center">
