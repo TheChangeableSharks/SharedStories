@@ -36,7 +36,7 @@ export class StoriesService {
   getTopStories() {
     return this.db
       .list(this.collection, {
-        query: { orderByChild: 'likes', limitToLast : 5 }
+        query: { orderByChild: 'reversedLikesCount', limitToFirst: 5 }
       });
   }
 
@@ -47,17 +47,34 @@ export class StoriesService {
         title,
         content,
         authorId,
-        likes: 0,
-        likedUsers: [],
+        reversedLikesCount: 0,
         dateAdded: 0 - Number(new Date()),
       });
   }
 
-  updateLikes(storyId, likes) {
+  like(storyId: string, userId: string, currentLikes) {
     const story = this.getById(storyId);
-    return story.update({
-      likes: likes
-    });
+
+    return story.$ref.child('likes')
+      .push(userId)
+      .then(() => {
+        const newReversedLikes = -(currentLikes + 1);
+        story.$ref
+          .child('reversedLikesCount')
+          .set(newReversedLikes);
+      });
+  }
+
+  unLike(storyId: string, userId: string, currentLikes) {
+    // const story = this.getById(storyId);
+
+    // return story.$ref.child('likes')
+    //   .orderByKey()
+    //   .equalTo(userId)
+    //   .limitToFirst(1)
+    //   .once('child_added', (snapshot) =>
+    //     snapshot.ref.remove()
+    //   );
   }
 
   addComment(storyId: string, content: string, authorId: string) {

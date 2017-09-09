@@ -22,8 +22,15 @@ export class StoryDetailsComponent implements OnInit, OnDestroy {
   ) { }
 
   like() {
-    this.storiesService
-      .updateLikes(this.story.$key, this.story.likes + 1);
+    const userId = this.authService.getCurrentUser().uid;
+    const storyId = this.story.$key;
+    const currentLikes = this.story.likesCount;
+
+    if (!this.story.likedByViewer) {
+      this.storiesService.like(storyId, userId, currentLikes);
+    } else {
+      this.storiesService.unLike(storyId, userId, currentLikes);
+    }
   }
 
   comment(e: KeyboardEvent, textarea: HTMLTextAreaElement) {
@@ -48,11 +55,8 @@ export class StoryDetailsComponent implements OnInit, OnDestroy {
         this.storiesSub = this.storiesService
           .getById(id)
           .subscribe((story) => {
-            story.dateAdded = new Date(story.dateAdded * -1);
-            if (story.comments) {
-              story.comments = Object.values(story.comments);
-            }
-            this.story = story;
+            const viewerId = this.authService.getCurrentUser().uid;
+            this.story = new Story(story, viewerId);
           });
       });
   }
