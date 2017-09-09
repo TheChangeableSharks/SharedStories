@@ -1,3 +1,4 @@
+import { Story } from './../../models/story';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class StoryComponent {
   @Input()
-  public stories: any[];
+  public stories: Story[];
 
   constructor() { }
 }

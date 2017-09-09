@@ -9,7 +9,10 @@ import { AuthService } from './../auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  constructor(private AuthService: AuthService, private router: Router) { }
+  constructor(
+    private AuthService: AuthService,
+    private router: Router
+  ) { }
 
   register(form: NgForm) {
     const email = form.value.email;

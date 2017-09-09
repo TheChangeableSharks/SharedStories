@@ -1,3 +1,4 @@
+import { Story } from './../../models/story';
 import { Subscription } from 'rxjs/Subscription';
 import { StoriesModule } from './../stories.module';
 import { StoriesService } from './../stories.service';
@@ -9,7 +10,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./top-stories.component.css']
 })
 export class TopStoriesComponent implements OnInit, OnDestroy {
-  public stories;
+  public stories: Story[];
   private storiesSub: Subscription;
 
   constructor(private storiesService: StoriesService) { }

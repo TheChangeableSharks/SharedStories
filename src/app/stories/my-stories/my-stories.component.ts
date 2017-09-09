@@ -2,6 +2,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { AuthService } from './../../auth/auth.service';
 import { StoriesService } from './../stories.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Story } from '../../models/story';
 
 @Component({
   selector: 'app-my-stories',
@@ -9,7 +10,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./my-stories.component.css']
 })
 export class MyStoriesComponent implements OnInit, OnDestroy {
-  public stories;
+  public stories: Story[];
   private storiesSub: Subscription;
 
   constructor(private storiesService: StoriesService, private authService: AuthService) { }

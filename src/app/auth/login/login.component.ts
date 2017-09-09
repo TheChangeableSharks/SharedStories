@@ -9,7 +9,11 @@ import { AuthService } from './../auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) { }
+
   login(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
