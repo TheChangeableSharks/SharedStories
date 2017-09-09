@@ -1,3 +1,28 @@
 h3 {
+    margin-top: 0;
     text-align: center;
+}
+
+.sidebar {
+    position: fixed;
+}
+@media (min-width: 576px) {
+    .sidebar {
+        width: 220px;
+    }
+}
+@media (min-width: 768px) {
+    .sidebar {
+        width: 220px;
+    }
+}
+@media (min-width: 992px) {
+    .sidebar {
+        width: 290px;
+    }
+}
+@media (min-width: 1200px) {
+    .sidebar {
+        width: 350px;
+    }
 }
