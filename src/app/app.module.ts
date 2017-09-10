@@ -1,3 +1,5 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrService } from './services/toastr/toastr.service';
 import { LoggedInGuard } from './auth/guards/logged-in.guard';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthService } from './auth/auth.service';
@@ -10,17 +12,19 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
 
 @NgModule({
   imports: [
-    BrowserModule,
+    BrowserAnimationsModule,
+    ToastModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase, 'SharedStories'),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
   ],
   declarations: [AppComponent, HeaderComponent, SidebarComponent],
-  providers: [AuthService, LoggedInGuard],
+  providers: [AuthService, LoggedInGuard, ToastrService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
