@@ -1,3 +1,4 @@
+import { LoggedInGuard } from './auth/guards/logged-in.guard';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthService } from './auth/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,7 +20,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     AngularFireAuthModule,
   ],
   declarations: [AppComponent, HeaderComponent, SidebarComponent],
-  providers: [AuthService],
+  providers: [AuthService, LoggedInGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

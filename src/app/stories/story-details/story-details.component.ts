@@ -34,19 +34,26 @@ export class StoryDetailsComponent implements OnInit, OnDestroy {
         this.storiesService.unLike(storyId, userId, currentLikes);
         this.story.likedByViewer = false;
       }
+    } else {
+      alert('You must be logged in to like.');
     }
   }
 
   comment(e: KeyboardEvent, textarea: HTMLTextAreaElement) {
     if (e.key === 'Enter') {
       e.preventDefault();
-      if (!textarea.value) {
-        alert('Comment is empty');
+
+      if (this.authService.getCurrentUser()) {
+        if (!textarea.value) {
+          alert('Comment is empty');
+        } else {
+          const authorId = this.authService.getCurrentUser().uid;
+          this.storiesService
+            .addComment(this.story.$key, textarea.value, authorId);
+          textarea.value = '';
+        }
       } else {
-        const authorId = this.authService.getCurrentUser().uid;
-        this.storiesService
-          .addComment(this.story.$key, textarea.value, authorId);
-        textarea.value = '';
+        alert('You must be logged in to comment.');
       }
     }
   }

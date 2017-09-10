@@ -1,6 +1,14 @@
-<div *ngFor="let story of stories" class="story">
-  <h4 class="title">
-    <a [routerLink]="['/stories/details/', story.$key]">{{story.title}}</a>
-  </h4>
-  <p class="content text-muted">{{story.content}}</p>
-</div>
+<div *ngIf="stories then storiesTemplate else loadingTemplate"></div>
+<ng-template #storiesTemplate>
+  <div *ngFor="let story of stories" class="story">
+    <h4 class="title">
+      <a [routerLink]="['/stories/details/', story.$key]">{{story.title}}</a>
+    </h4>
+    <p class="content text-muted">{{story.content}}</p>
+  </div>
+</ng-template>
+<ng-template #loadingTemplate>
+  <div class="text-center">
+    <img src="/assets/spinner.gif" alt="Loading...">
+  </div>
+</ng-template>

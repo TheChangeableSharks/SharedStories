@@ -19,11 +19,15 @@ import { TopStoriesComponent } from './top-stories/top-stories.component';
     FormsModule
   ],
   providers: [StoriesService],
-  declarations: [AllStoriesComponent, MyStoriesComponent, StoryComponent, CreateStoryComponent,
+  declarations: [
+    AllStoriesComponent,
+    MyStoriesComponent,
+    StoryComponent,
+    CreateStoryComponent,
     RandomStoryComponent,
     StoryDetailsComponent,
     TopStoriesComponent,
     SearchFilterPipe
-]
+  ]
 })
 export class StoriesModule { }
