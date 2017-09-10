@@ -13,7 +13,10 @@ export class MyStoriesComponent implements OnInit, OnDestroy {
   public stories: Story[];
   private storiesSub: Subscription;
 
-  constructor(private storiesService: StoriesService, private authService: AuthService) { }
+  constructor(
+    private storiesService: StoriesService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
     const user = this.authService.getCurrentUser();
