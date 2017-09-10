@@ -24,4 +24,8 @@ export class AuthService {
   getCurrentUser() {
     return this.fireAuth.auth.currentUser;
   }
+
+  getCurrentUserObservable() {
+    return this.fireAuth.authState;
+  }
 }

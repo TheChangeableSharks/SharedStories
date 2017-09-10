@@ -1,3 +1,4 @@
+import { LoggedInGuard } from './guards/logged-in.guard';
 import { LoggedOutGuard } from './guards/logged-out.guard';
 import { FormsModule } from '@angular/forms';
 import { AuthRoutingModule } from './auth-routing.module';
@@ -20,6 +21,6 @@ import { LogoutComponent } from './logout/logout.component';
     FormsModule,
     AuthRoutingModule,
   ],
-  providers: [AngularFireAuth, AuthService, LoggedOutGuard],
+  providers: [AuthService, LoggedInGuard, LoggedOutGuard]
 })
 export class AuthModule { }

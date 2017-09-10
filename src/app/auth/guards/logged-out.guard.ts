@@ -8,16 +8,23 @@ export class LoggedOutGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-      if (this.authService.getCurrentUser()) {
-        this.router.navigate(['/']);
-        return false;
-      } else {
-        return true;
-      }
+    return new Promise((resolve) => {
+      const sub = this.authService
+        .getCurrentUserObservable()
+        .subscribe((user) => {
+          sub.unsubscribe();
+          if (user) {
+            this.router.navigate(['/']);
+            resolve(false);
+          } else {
+            resolve(true);
+          }
+        });
+    });
   }
 }

@@ -8,16 +8,23 @@ export class LoggedInGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-      if (this.authService.getCurrentUser()) {
-        return true;
-      } else {
-        this.router.navigate(['/auth/login']);
-        return false;
-      }
+    return new Promise((resolve) => {
+      const sub = this.authService
+        .getCurrentUserObservable()
+        .subscribe((user) => {
+          sub.unsubscribe();
+          if (user) {
+            resolve(true);
+          } else {
+            this.router.navigate(['/auth']);
+            resolve(false);
+          }
+        });
+    });
   }
 }

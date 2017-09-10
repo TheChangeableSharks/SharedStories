@@ -3,7 +3,10 @@
   <div class="row">
     <app-sidebar class="col-xs-3"></app-sidebar>
     <div class="col-xs-9">
-      <router-outlet></router-outlet>
+      <div class="col-xs-7">
+        <router-outlet></router-outlet>
+      </div>
+      <app-top-stories class="col-xs-5" *ngIf="isStoriesRoute()"></app-top-stories>
     </div>
   </div>
 </div>

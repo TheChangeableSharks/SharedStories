@@ -1,34 +1,29 @@
-<div class="row">
-  <div class="col-xs-7">
-    <div *ngIf="story then storyTemplate else loadingTemplate"></div>
-    <ng-template #storyTemplate>
-      <div class="story">
-        <h3 class="title">{{story.title}}</h3>
-        <p class="content text-muted small">{{story.dateAdded | date:'dd MMM yyyy HH:mm'}} by Anonymous</p>
-        <p class="content text-muted text-justify">{{story.content}}</p>
-      </div>
-      <div class="text-center">
-        <h3>
-          <button class="btn btn-primary" (click)="like()">
+<div *ngIf="story then storyTemplate else loadingTemplate"></div>
+<ng-template #storyTemplate>
+  <div class="story">
+    <h3 class="title">{{story.title}}</h3>
+    <p class="content text-muted small">{{story.dateAdded | date:'dd MMM yyyy HH:mm'}} by Anonymous</p>
+    <p class="content text-muted text-justify">{{story.content}}</p>
+  </div>
+  <div class="text-center">
+    <h3>
+      <button class="btn btn-primary" (click)="like()">
             <span *ngIf="story.likedByViewer" class="glyphicon glyphicon-heart"></span>
             <span *ngIf="!story.likedByViewer" class="glyphicon glyphicon-heart-empty"></span>
             <span>&nbsp;Like</span>
           </button>
-          <span>{{story.likesCount}}&nbsp;Likes</span>
-        </h3>
-        <h3>Comments</h3>
-      </div>
-      <textarea #textarea (keypress)="comment($event, textarea)" class="comment-input form-control" placeholder="Write a comment..."></textarea>
-      <div *ngFor="let comment of story.comments" class="comment">
-         <p class="text-muted small">{{comment.dateAdded | date:'dd MMM yyyy HH:mm'}} by Anonymous</p>
-         <p>{{comment.content}}</p>
-      </div>
-    </ng-template>
-    <ng-template #loadingTemplate>
-      <div class="text-center">
-        <img src="/assets/spinner.gif" alt="Loading...">
-      </div>
-    </ng-template>
+      <span>{{story.likesCount}}&nbsp;Likes</span>
+    </h3>
+    <h3>Comments</h3>
   </div>
-  <app-top-stories></app-top-stories>
-</div>
+  <textarea #textarea (keypress)="comment($event, textarea)" class="comment-input form-control" placeholder="Write a comment..."></textarea>
+  <div *ngFor="let comment of story.comments" class="comment">
+    <p class="text-muted small">{{comment.dateAdded | date:'dd MMM yyyy HH:mm'}} by Anonymous</p>
+    <p>{{comment.content}}</p>
+  </div>
+</ng-template>
+<ng-template #loadingTemplate>
+  <div class="text-center">
+    <img src="/assets/spinner.gif" alt="Loading...">
+  </div>
+</ng-template>

@@ -1,15 +1,10 @@
-<div class="row">
-  <div class="col-xs-7 text-center">
-    <h2>Publish your story</h2>
-    <form #f="ngForm" (ngSubmit)="create(f)">
-      <div class="form-group">
-        <input class="form-control" placeholder="Title" type="text" name="title" ngModel required>
-      </div>
-      <div class="form-group">
-        <textarea class="form-control" name="content" placeholder="Write your story.." ngModel required></textarea>
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Publish</button>
-    </form>
+<h2 class="text-center">Publish your story</h2>
+<form #f="ngForm" (ngSubmit)="create(f)">
+  <div class="form-group">
+    <input class="form-control" placeholder="Title" type="text" name="title" ngModel required>
   </div>
-  <app-top-stories></app-top-stories>
-</div>
+  <div class="form-group">
+    <textarea class="form-control" name="content" placeholder="Write your story.." ngModel required></textarea>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Publish</button>
+</form>

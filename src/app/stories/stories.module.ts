@@ -18,7 +18,6 @@ import { TopStoriesComponent } from './top-stories/top-stories.component';
     StoriesRoutingModule,
     FormsModule
   ],
-  providers: [StoriesService],
   declarations: [
     AllStoriesComponent,
     MyStoriesComponent,
@@ -28,6 +27,8 @@ import { TopStoriesComponent } from './top-stories/top-stories.component';
     StoryDetailsComponent,
     TopStoriesComponent,
     SearchFilterPipe
-  ]
+  ],
+  providers: [StoriesService],
+  exports: [TopStoriesComponent]
 })
 export class StoriesModule { }
