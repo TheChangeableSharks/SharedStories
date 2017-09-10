@@ -6,25 +6,19 @@
 }
 
 .sidebar {
-    position: fixed;
+    max-width: 90%;
+    margin: 0 auto;
 }
-@media (min-width: 576px) {
-    .sidebar {
-        width: 150px;
-    }
-}
-@media (min-width: 768px) {
-    .sidebar {
-        width: 170px;
-    }
-}
+
 @media (min-width: 992px) {
     .sidebar {
         width: 220px;
+        position: fixed;
     }
 }
 @media (min-width: 1200px) {
     .sidebar {
         width: 270px;
+        position: fixed;
     }
 }

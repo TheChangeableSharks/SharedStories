@@ -17,6 +17,6 @@ export class AppComponent {
   }
 
   isStoriesRoute() {
-    return !this.router.isActive('/auth', false);
+    return !!this.router.isActive('/stories', false);
   }
 }

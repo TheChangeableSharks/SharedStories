@@ -12,8 +12,7 @@ html {
 }
 
 body {
-    padding-top: 80px;
-    padding-bottom: 50px;
+    padding: 65px 0;
 }
 
 /* bootstrap extensions */
