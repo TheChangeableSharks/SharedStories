@@ -1,3 +1,4 @@
+import { LoggedInGuard } from './../auth/guards/logged-in.guard';
 import { TopStoriesComponent } from './top-stories/top-stories.component';
 import { StoryDetailsComponent } from './story-details/story-details.component';
 import { RandomStoryComponent } from './random-story/random-story.component';
@@ -10,10 +11,10 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'all' },
   { path: 'all', component: AllStoriesComponent },
-  { path: 'my', component: MyStoriesComponent },
-  { path: 'create', component: CreateStoryComponent },
   { path: 'random', component: RandomStoryComponent },
-  { path: 'details/:id', component: StoryDetailsComponent }
+  { path: 'details/:id', component: StoryDetailsComponent },
+  { path: 'create', component: CreateStoryComponent, canActivate: [LoggedInGuard] },
+  { path: 'my', component: MyStoriesComponent, canActivate: [LoggedInGuard] },
 ];
 
 @NgModule({
