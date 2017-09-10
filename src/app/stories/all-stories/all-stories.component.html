@@ -3,7 +3,7 @@
   <div class="form-group has-feedback">
     <input class="form-control text-center" type="text" placeholder="Search a story..." [ngModelOptions]="{standalone:true}"
       [(ngModel)]="term">
-    <span class="glyphicon glyphicon-search form-control-feedback" style="color:blue"></span>
+    <span class="glyphicon glyphicon-search form-control-feedback"></span>
   </div>
 </form>
 <app-story [stories]="stories | searchFilter:term"></app-story>

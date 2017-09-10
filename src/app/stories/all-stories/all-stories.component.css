@@ -1,12 +1,12 @@
 h3 {
     margin-top: 0;
 }
-.form-control{
+.form-control {
   -webkit-border-radius: 30px;
      -moz-border-radius: 30px;
           border-radius: 30px;
           margin-bottom: 10px;
 }
-.span{
-    background-color: blue;
+.form-control-feedback {
+    color: #337ab7;
 }
