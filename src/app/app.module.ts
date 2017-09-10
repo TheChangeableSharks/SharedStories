@@ -1,3 +1,4 @@
+import { AboutComponent } from './about/about.component';
 import { StoriesModule } from './stories/stories.module';
 import { AuthModule } from './auth/auth.module';
 import { LoggedOutGuard } from './auth/guards/logged-out.guard';
@@ -32,7 +33,7 @@ import {ToastModule} from 'ng2-toastr/ng2-toastr';
     StoriesModule,
     AuthModule,
   ],
-  declarations: [AppComponent, HeaderComponent, SidebarComponent],
+  declarations: [AppComponent, HeaderComponent, SidebarComponent, AboutComponent],
   providers: [ToastrService],
   bootstrap: [AppComponent]
 })
