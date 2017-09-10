@@ -14,9 +14,9 @@ export class LoggedOutGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
       if (this.authService.getCurrentUser()) {
+        this.router.navigate(['/']);
         return false;
       } else {
-        this.router.navigate(['/']);
         return true;
       }
   }
