@@ -1,3 +1,4 @@
+import { HighlightDirective } from './../shared/directives/highlight.directive';
 import { SearchFilterPipe } from './../shared/pipes/filter-pipe';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -27,8 +28,9 @@ import { TopStoriesComponent } from './top-stories/top-stories.component';
     StoryDetailsComponent,
     TopStoriesComponent,
     SearchFilterPipe,
+    HighlightDirective
 ],
   providers: [StoriesService],
-  exports: [TopStoriesComponent]
+  exports: [TopStoriesComponent, HighlightDirective]
 })
 export class StoriesModule { }

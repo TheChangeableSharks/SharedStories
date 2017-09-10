@@ -1,6 +1,6 @@
 <div *ngIf="stories then storiesTemplate else loadingTemplate"></div>
 <ng-template #storiesTemplate>
-  <div *ngFor="let story of stories" class="story">
+  <div *ngFor="let story of stories" appHighlight class="story">
     <h4 class="title">
       <a [routerLink]="['/stories/details/', story.$key]">{{story.title}}</a>
     </h4>
