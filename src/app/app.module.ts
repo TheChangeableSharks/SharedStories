@@ -1,3 +1,4 @@
+import { SetTimeOutDirective } from './shared/directives/setTimeOut.directive';
 import { AboutComponent } from './about/about.component';
 import { StoriesModule } from './stories/stories.module';
 import { AuthModule } from './auth/auth.module';
@@ -33,7 +34,7 @@ import {ToastModule} from 'ng2-toastr/ng2-toastr';
     StoriesModule,
     AuthModule,
   ],
-  declarations: [AppComponent, HeaderComponent, SidebarComponent, AboutComponent],
+  declarations: [AppComponent, HeaderComponent, SidebarComponent, AboutComponent, SetTimeOutDirective],
   providers: [ToastrService],
   bootstrap: [AppComponent]
 })
