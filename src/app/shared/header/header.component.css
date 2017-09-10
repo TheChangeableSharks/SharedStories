@@ -1,9 +1,4 @@
-.navbar-brand {
-    font-size: 25px;
-}
-
 .navbar-brand > img {
     display: inline-block;
-    vertical-align: middle;
-    height: 90%;
+    height: 100%;
 }
