@@ -11,6 +11,7 @@ import { CreateStoryComponent } from './create-story/create-story.component';
 import { RandomStoryComponent } from './random-story/random-story.component';
 import { StoryDetailsComponent } from './story-details/story-details.component';
 import { TopStoriesComponent } from './top-stories/top-stories.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   imports: [
@@ -26,8 +27,9 @@ import { TopStoriesComponent } from './top-stories/top-stories.component';
     RandomStoryComponent,
     StoryDetailsComponent,
     TopStoriesComponent,
-    SearchFilterPipe
-  ],
+    SearchFilterPipe,
+    AboutComponent
+],
   providers: [StoriesService],
   exports: [TopStoriesComponent]
 })

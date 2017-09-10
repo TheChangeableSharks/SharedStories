@@ -7,6 +7,8 @@ import { MyStoriesComponent } from './my-stories/my-stories.component';
 import { AllStoriesComponent } from './all-stories/all-stories.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AboutComponent } from './about/about.component';
+
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'all' },
@@ -15,6 +17,7 @@ const routes: Routes = [
   { path: 'details/:id', component: StoryDetailsComponent },
   { path: 'create', component: CreateStoryComponent, canActivate: [LoggedInGuard] },
   { path: 'my', component: MyStoriesComponent, canActivate: [LoggedInGuard] },
+  { path: 'about', component:AboutComponent}
 ];
 
 @NgModule({
