@@ -11,6 +11,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 export class AllStoriesComponent implements OnInit, OnDestroy {
   public stories: Story[];
   private storiesSub: Subscription;
+  private term = '';
 
   constructor(private storiesService: StoriesService) { }
 

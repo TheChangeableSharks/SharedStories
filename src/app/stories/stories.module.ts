@@ -1,3 +1,4 @@
+import { SearchFilterPipe } from './../shared/pipes/filter-pipe';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -21,7 +22,8 @@ import { TopStoriesComponent } from './top-stories/top-stories.component';
   declarations: [AllStoriesComponent, MyStoriesComponent, StoryComponent, CreateStoryComponent,
     RandomStoryComponent,
     StoryDetailsComponent,
-    TopStoriesComponent
+    TopStoriesComponent,
+    SearchFilterPipe
 ]
 })
 export class StoriesModule { }
