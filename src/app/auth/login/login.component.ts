@@ -1,3 +1,4 @@
+import { ToastrService } from './../../services/toastr/toastr.service';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -10,6 +11,7 @@ import { AuthService } from './../auth.service';
 })
 export class LoginComponent {
   constructor(
+    private toastr: ToastrService,
     private authService: AuthService,
     private router: Router
   ) { }
@@ -22,7 +24,7 @@ export class LoginComponent {
       .then(() => this.router.navigate(['/']))
       .catch((error: any) => {
         const errorMessage = error.message;
-        alert(errorMessage);
+        this.toastr.showError(errorMessage);
       });
   }
 }

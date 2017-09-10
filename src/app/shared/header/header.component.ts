@@ -12,4 +12,7 @@ export class HeaderComponent {
   getCurrentUser() {
     return this.authService.getCurrentUser();
   }
+  onEdit() {
+    window.scrollTo(0, 0);
+  }
 }

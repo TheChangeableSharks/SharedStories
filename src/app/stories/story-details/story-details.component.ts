@@ -1,3 +1,4 @@
+import { ToastrService } from './../../services/toastr/toastr.service';
 import { Subscription } from 'rxjs/Subscription';
 import { AuthService } from './../../auth/auth.service';
 import { Story } from './../../models/story';
@@ -16,6 +17,7 @@ export class StoryDetailsComponent implements OnInit, OnDestroy {
   public story: Story;
 
   constructor(
+    private toastr: ToastrService,
     private route: ActivatedRoute,
     private storiesService: StoriesService,
     private authService: AuthService
@@ -35,7 +37,7 @@ export class StoryDetailsComponent implements OnInit, OnDestroy {
         this.story.likedByViewer = false;
       }
     } else {
-      alert('You must be logged in to like.');
+      this.toastr.showError('You must be logged in to like.');
     }
   }
 
@@ -45,7 +47,7 @@ export class StoryDetailsComponent implements OnInit, OnDestroy {
 
       if (this.authService.getCurrentUser()) {
         if (!textarea.value) {
-          alert('Comment is empty');
+          this.toastr.showError('Comment is empty');
         } else {
           const authorId = this.authService.getCurrentUser().uid;
           this.storiesService
@@ -53,7 +55,7 @@ export class StoryDetailsComponent implements OnInit, OnDestroy {
           textarea.value = '';
         }
       } else {
-        alert('You must be logged in to comment.');
+        this.toastr.showError('You must be logged in to comment.');
       }
     }
   }
